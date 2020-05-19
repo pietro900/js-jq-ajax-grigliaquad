@@ -12,25 +12,37 @@ for (var i = 0; i < 36; i++) {
 
 //Ad ogni click su un quadratino, parte una richiesta ajax per recuperare un numero random tra 1 e 9
 $('.quadrato').click(function(){
+    //recupero il p del quadrato dove ho cliccato;
+    var selettore = $(this).find('p');
+
+    //genero un numero random tramite api;
     $.ajax({
         'url' : 'https://ﬂynn.boolean.careers/exercises/api/random/int',
         'method' : 'GET',
         'success' : function(data){
             var numero_pc = data.response;
-            $(this).text(numero_pc)
+            selettore.text(numero_pc);
+            controllo(numero_pc);
 
-            if (numero_pc <= 5) {
-                var testo = $(this).find('p').addClass('giallo')
-                console.log(testo);
-            }
-            else {
-                var testo1 = $(this).find('p').addClass('verde')
-                console.log(testo1);
-            }
         },
         'error' : function () {
-            allert('si è verificato un errore')
+            allert('si è verificato un errore');
         }
 
     });
+
+    //creo una funzione che controlla se il numero è maggiore di 5 ed aggiunge la classe esatta;
+    function controllo(numero) {
+        if (numero <= 5) {
+            selettore.removeClass();
+            var testo = selettore.addClass('giallo');
+            console.log(testo);
+        }
+        else {
+            selettore.removeClass();
+            var testo1 = selettore.addClass('verde');
+            console.log(testo1);
+        };
+    };
+
 });
