@@ -22,16 +22,17 @@
     float: left;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
 }
 
 p{
     font-size: 40px;
 }
+
 .giallo{
-    color: yellow;
+    background-color: yellow;
 }
 
 .verde{
-    color:green;
+    background-color: green;
 }
